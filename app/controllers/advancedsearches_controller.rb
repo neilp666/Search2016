@@ -1,21 +1,23 @@
 class AdvancedsearchesController < ApplicationController
 
   def new
-    @search = Search.new
+    @search = Advancedsearch.new
+    @category = Book.uniq.pluck(:category)
   end
 
   def create
-    @search = Search.create(search_params)
+    @search = Advancedsearch.create(search_params)
     redirect_to @search
   end
 
   def show 
-    @search = Search.find(params[:id])
+    @search = Advancedsearch.find(params[:id])
   end
 
   private 
 
   def search_params
-    params.require(:search).permit(:keywords, :category, :min_price, :max_price, :isbn)
+    params.require(:advancedsearch).permit(:keywords, :category, :min_price, :max_price, :isbn)
   end
+  
 end

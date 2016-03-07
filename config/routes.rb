@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'books#index'
-  resources :searches
+  resources :advancedsearches
   resources :books
   
 end
